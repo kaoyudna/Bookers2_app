@@ -17,11 +17,12 @@ class User < ApplicationRecord
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 50 }
 
-
+# ユーザープロフィール画像
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
 
+# フォロー機能
   def follow(user)
     reverce_of_relationships.create(followed_id: user.id)
   end
@@ -32,5 +33,18 @@ class User < ApplicationRecord
 
   def following?(user)
     followings.include?(user)
+  end
+
+# 検索機能
+  def self.search_for(word,method)
+    if method == 'perfect'
+      User.where(name: word)
+    elsif method == 'forward'
+      User.where('name LIKE ?', "#{word}%")
+    elsif method == 'backward'
+      User.where('name LIKE ?', "%#{word}")
+    elsif method == 'partial'
+      User.where('name LIKE ?', "%#{word}%")
+    end
   end
 end
