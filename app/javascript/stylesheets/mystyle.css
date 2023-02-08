@@ -1,0 +1,138 @@
+.btn-flat-border-before {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.btn-flat-border-before:hover {
+  background: #67c5ff;
+  color: white;
+}
+
+.btn-flat-border-after {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: white;
+  border: solid 2px #67c5ff;
+  background-color: #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.btn-flat-border-after:hover {
+  background: white;
+  color: #67c5ff;
+}
+
+.btn-border-bottom {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0;
+  text-decoration: none;
+  color: #67c5ff;
+}
+
+.btn-border-bottom:before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 4px;
+  top:100%;
+  left: 0;
+  border-radius: 3px;
+  background:#67c5ff;
+  transition: .2s;
+}
+
+.btn-border-bottom:hover:before {
+  top: -webkit-calc(100% - 3px);
+  top: calc(100% - 3px);
+}
+
+
+fav {
+  margin: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+input[type="checkbox"] {
+  display: none;
+}
+label {
+  position: relative;
+  cursor: pointer;
+}
+label svg {
+  width: 160px;
+}
+input[type="checkbox"] + label svg {
+  fill: #FAE2E2;
+  transition: all .3s;
+}
+input[type="checkbox"]:checked + label svg {
+  fill: #FA9797;
+  animation: like .8s ease-out;
+  transition: all .3s;
+}
+@keyframes like {
+  0% {
+    transform: scale(1,1);
+  }
+  50% {
+    transform: scale(.5,.5);
+  }
+  100% {
+    transform: scale(1,1);
+  }
+}
+input[type="checkbox"]:checked + label::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border: 5px solid #FA9797;
+  border-radius: 50%;
+  animation: circle .8s ease-out;
+  opacity: 0;
+  top: -10px;
+  left: -4px;
+  z-index: -100;
+}
+@keyframes circle {
+  0% {
+    transform: scale(.2,.2);
+  }
+  50% {
+    transform: scale(.5,.5);
+  }
+  80% {
+    transform: scale(1,1);
+    opacity: .8;
+  }
+  100% {
+    transform: scale(1.3,1.3);
+    opacity: 0;
+  }
+}
+
+.btn-flat-success {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: green;
+  border: solid 2px green;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.btn-flat-success:hover {
+  background: green;
+  color: white;
+}
