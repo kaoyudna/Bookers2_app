@@ -8,7 +8,16 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
+    to = Time.current.at_end_of_day
+    from = (to - 6.day).at_beginning_of_day
+    #Bookに関連するfavorited_usersの内容をまとめて取得
+    #favorited_users=その本に対していいねしたユーザー
+    #(Book.favoritesだと対象になる本のidまで持ってきてしまうため比較できない)
+    @books = Book.includes(:favorited_users).
+      sort {|a,b|
+        b.favorited_users.where(created_at: from...to).size <=>
+        a.favorited_users.where(created_at: from...to).size
+      }
     @book = Book.new
   end
 

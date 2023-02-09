@@ -30,6 +30,38 @@
   color: #67c5ff;
 }
 
+/*送信ボタン*/
+.btn-flat-success {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: limegreen;
+  border: solid 2px limegreen;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.btn-flat-success:hover {
+  background: limegreen;
+  color: white;
+}
+
+/*検索ボタン*/
+.btn-flat-search {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: gray;
+  border: solid 2px gray;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.btn-flat-search:hover {
+  background: gray;
+  color: white;
+}
+
 /*リンクボタン*/
 
 .btn-border-bottom {
@@ -94,20 +126,4 @@ input[type="checkbox"]:checked + label svg {
   100% {
     transform: scale(1,1);
   }
-}
-
-/*送信ボタン*/
-.btn-flat-success {
-  display: inline-block;
-  padding: 0.3em 1em;
-  text-decoration: none;
-  color: green;
-  border: solid 2px green;
-  border-radius: 3px;
-  transition: .4s;
-}
-
-.btn-flat-success:hover {
-  background: green;
-  color: white;
 }
