@@ -20,5 +20,8 @@ Rails.application.routes.draw do
 
 #検索関連ルート
   get 'searches/search'=>'searches#search',as: 'search'
+
+#チャット関連ルート
+  resources :chats, only: [:show, :create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
