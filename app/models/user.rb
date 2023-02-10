@@ -20,6 +20,12 @@ class User < ApplicationRecord
   has_many :user_rooms, dependent: :destroy
   has_many :rooms, through: :user_rooms
 
+#閲覧数表示のアソシエーション
+  has_many :view_counts, dependent: :destroy
+
+#グループ機能のアソシエーション
+  has_many :group_users, dependent: :destroy
+
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 50 }
 

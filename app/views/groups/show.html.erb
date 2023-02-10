@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <h2 class="under_line2">User info</h2>
+      <%= render 'users/info', user: current_user %>
+      <h2 class="mt-3 under_line2">New book</h2>
+      <%= render 'books/form', book: @book %>
+    </div>
+    <div class="col-lg-8 offset-md-1">
+      <h2 class="under_line2">Group detail</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>グループ名</th>
+            <th>紹介文</th>
+            <th>メンバー</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= image_tag @group.get_group_image, size: '50x50' %></td>
+            <td><%= @group.name %></td>
+            <td><%= @group.introduction %></td>
+            <td>
+              <% @group.users.each do |user| %>
+              <li class="list-unstyled">
+                <%= user.name %>
+              </li>
+              <% end %>
+            </td>
+            <td>
+              <% if @group.owner_id == current_user.id %>
+                <%= link_to "Edit", edit_group_path(@group), class:"btn btn-success" %>
+              <% else %>
+                <% if @group.user_join?(current_user) %>
+                  <%= link_to "Withdrawal", group_withdrawal_path(@group), class:"btn_20", method: :delete %>
+                <% else %>
+                  <%= link_to "Join", group_join_path(@group), class:"btn_19", method: :post %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

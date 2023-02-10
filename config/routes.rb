@@ -21,7 +21,14 @@ Rails.application.routes.draw do
 #検索関連ルート
   get 'searches/search'=>'searches#search',as: 'search'
 
+#グループ機能用ルート
+  resources :groups do
+    post 'groups/join'=>'groups#join',as: 'join'
+    delete 'groups/withdrawal'=>'groups#withdrawal',as: 'withdrawal'
+  end
+
 #チャット関連ルート
   resources :chats, only: [:show, :create]
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
