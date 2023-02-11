@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <div class="margin_top">内容は以下の通りです。</div>
+      <p>タイトル</p><br>
+      <p><strong><%= @mail_title %></strong></p>
+      <p>本文</p>
+      <p><strong><%= safe_join(@mail_content.split("\n"),tag(:br)) %></strong></p>
+    </div>
+  </div>
+</div>
